@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Marzook Ruslan - Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Light theme colors */
+    :root {
+      --bg-color: #f7f9fc;
+      --text-color: #222;
+      --nav-bg: #0d6efd;
+      --nav-text: white;
+      --btn-bg: #ffc107;
+      --btn-text: #000;
+      --btn-hover-bg: #e0a800;
+      --skill-bar-bg: #ddd;
+      --skill-level-bg: #ffc107;
+      --section-title-color: #0d6efd;
+      --section-title-underline: #ffc107;
+      --timeline-line-color: #0d6efd;
+      --timeline-icon-bg: #0d6efd;
+      --timeline-icon-color: white;
+      --footer-bg: #0d6efd;
+      --footer-text: white;
+      --link-color: #0d6efd;
+      --link-hover: #ffc107;
+      --project-card-bg: white;
+      --project-card-shadow: rgba(0, 0, 0, 0.1);
+      --goTopBtn-bg: #0d6efd;
+      --goTopBtn-hover-bg: #0b5ed7;
+    }
+
+    /* Dark theme colors */
+    body.dark {
+      --bg-color: #121212;
+      --text-color: #eee;
+      --nav-bg: #1a1a1a;
+      --nav-text: #eee;
+      --btn-bg: #bb86fc;
+      --btn-text: #121212;
+      --btn-hover-bg: #9a67ea;
+      --skill-bar-bg: #333;
+      --skill-level-bg: #bb86fc;
+      --section-title-color: #bb86fc;
+      --section-title-underline: #bb86fc;
+      --timeline-line-color: #bb86fc;
+      --timeline-icon-bg: #bb86fc;
+      --timeline-icon-color: #121212;
+      --footer-bg: #1a1a1a;
+      --footer-text: #eee;
+      --link-color: #bb86fc;
+      --link-hover: #e0a800;
+      --project-card-bg: #222;
+      --project-card-shadow: rgba(255, 255, 255, 0.1);
+      --goTopBtn-bg: #bb86fc;
+      --goTopBtn-hover-bg: #9a67ea;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      scroll-behavior: smooth;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    a {
+      text-decoration: none;
+      color: var(--text-color);
+      transition: color 0.3s;
+    }
+
+    a:hover {
+      color: var(--link-hover);
+    }
+
+    nav {
+      background: var(--nav-bg);
+      color: var(--nav-text);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(13, 110, 253, 0.3);
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      letter-spacing: 2px;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--nav-text);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      transition: max-height 0.3s ease-in-out;
+    }
+
+    nav ul li a {
+      color: var(--nav-text);
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    nav ul li a.active,
+    nav ul li a:hover {
+      color: #ffc107;
+    }
+
+    /* Mobile menu toggle button */
+    .menu-toggle {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: var(--nav-text);
+      background: none;
+      border: none;
+    }
+
+    /* Dark mode toggle button */
+    .dark-mode-toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--nav-text);
+      font-size: 1.5rem;
+      margin-left: 1rem;
+      transition: color 0.3s;
+    }
+
+    /* Home Section */
+    #home {
+      height: 100vh;
+      background: linear-gradient(135deg, #0d6efd, #6610f2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+      padding: 0 1rem;
+      transition: background 0.3s;
+    }
+
+    body.dark #home {
+      background: linear-gradient(135deg, #bb86fc, #6200ee);
+    }
+
+    #home h1 {
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+    }
+
+    #home h1 span {
+      color: #ffc107;
+      border-bottom: 3px solid #ffc107;
+    }
+
+    .typed-text {
+      font-size: 1.4rem;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      background: var(--btn-bg);
+      color: var(--btn-text);
+      font-weight: 700;
+      padding: 0.7rem 1.8rem;
+      border-radius: 30px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(255, 193, 7, 0.4);
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background: var(--btn-hover-bg);
+    }
+
+    section {
+      max-width: 900px;
+      margin: 4rem auto;
+      padding: 0 1rem;
+    }
+
+    section h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      color: var(--section-title-color);
+      position: relative;
+    }
+
+    section h2::after {
+      content: '';
+      position: absolute;
+      width: 80px;
+      height: 3px;
+      background: var(--section-title-underline);
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: -10px;
+      border-radius: 5px;
+    }
+
+    .skill {
+      margin-bottom: 1.5rem;
+    }
+
+    .skill-name {
+      font-weight: 600;
+      color: var(--section-title-color);
+    }
+
+    .skill-bar {
+      background: var(--skill-bar-bg);
+      border-radius: 30px;
+      height: 20px;
+      overflow: hidden;
+    }
+
+    .skill-level {
+      height: 100%;
+      width: 0;
+      background: var(--skill-level-bg);
+      border-radius: 30px;
+      transition: width 1.5s ease-in-out;
+    }
+
+    .project-card {
+      background: var(--project-card-bg);
+      padding: 1rem;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px var(--project-card-shadow);
+      margin-bottom: 2rem;
+      transition: transform 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .project-image {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      max-height: 250px;
+      object-fit: cover;
+    }
+
+    .project-title {
+      font-weight: 700;
+      color: var(--section-title-color);
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-description {
+      color: var(--text-color);
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .project-links a {
+      margin-right: 15px;
+      color: var(--btn-bg);
+      transition: color 0.3s;
+    }
+
+    .project-links a:hover {
+      color: var(--btn-hover-bg);
+    }
+
+    #contact p,
+    #contact a {
+      text-align: center;
+      color: var(--text-color);
+      font-size: 1.1rem;
+      transition: color 0.3s;
+    }
+
+    #contact a {
+      color: var(--link-color);
+    }
+
+    #contact a:hover {
+      color: var(--link-hover);
+    }
+
+    footer {
+      background: var(--footer-bg);
+      color: var(--footer-text);
+      text-align: center;
+      padding: 1rem;
+      margin-top: 4rem;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: 0.8s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Go To Top Button */
+    #goTopBtn {
+      position: fixed;
+      bottom: 30px;
+      right: 20px;
+      z-index: 1000;
+      background: var(--goTopBtn-bg);
+      color: #fff;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 50%;
+      font-size: 18px;
+      display: none;
+      cursor: pointer;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+      transition: background 0.3s;
+    }
+
+    #goTopBtn:hover {
+      background: var(--goTopBtn-hover-bg);
+    }
+
+    /* Timeline styles */
+    .timeline {
+      position: relative;
+      margin: 2rem auto;
+      padding: 1rem 0;
+      max-width: 700px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 20px;
+      width: 3px;
+      height: 100%;
+      background: var(--timeline-line-color);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-left: 60px;
+      margin-bottom: 2rem;
+    }
+
+    .timeline-icon {
+      position: absolute;
+      top: 0;
+      left: -8px;
+      background: var(--timeline-icon-bg);
+      color: var(--timeline-icon-color);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 16px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .timeline-content {
+      background: var(--project-card-bg);
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px var(--project-card-shadow);
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .timeline-content h3 {
+      color: var(--section-title-color);
+      margin-bottom: 0.2rem;
+    }
+
+    .timeline-date {
+      display: block;
+      font-size: 0.95rem;
+      color: #666;
+      margin-bottom: 0.5rem;
+      transition: color 0.3s;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+        flex-direction: column;
+        background: var(--nav-bg);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-in-out;
+        z-index: 999;
+      }
+
+      nav ul.show {
+        display: flex;
+        max-height: 500px; /* enough height */
+      }
+
+      nav ul li {
+        padding: 1rem 2rem;
+      }
+
+      nav ul li a {
+        font-size: 1.2rem;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .logo {
+        font-size: 1.2rem;
+      }
+
+      #home h1 {
+        font-size: 2rem;
+      }
+
+      .typed-text {
+        font-size: 1rem;
+      }
+
+      #goTopBtn {
+        bottom: 20px;
+        right: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo"><i class="fas fa-code"></i> Marzook Ruslan</div>
+    
+    <button class="menu-toggle" aria-label="Toggle navigation menu">
+      <i class="fas fa-bars"></i>
+    </button>
+    
+    <ul>
+      <li><a href="#home" class="nav-link active"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="#about" class="nav-link"><i class="fas fa-user"></i> About</a></li>
+      <li><a href="#skills" class="nav-link"><i class="fas fa-laptop-code"></i> Skills</a></li>
+      <li><a href="#qualification" class="nav-link">Qualification</a></li>
+      <li><a href="#projects" class="nav-link"><i class="fas fa-folder-open"></i> Projects</a></li>
+      <li><a href="#contact" class="nav-link"><i class="fas fa-envelope"></i> Contact</a></li>
+    </ul>
+
+    <button class="dark-mode-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <i class="fas fa-moon"></i>
+    </button>
+  </nav>
+
+  <section id="home">
+    <div>
+      <h1>Hello, I'm <span class="typed-text"></span></h1>
+      <button class="btn" onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})">View Projects</button>
+    </div>
+  </section>
+
+  <section id="about" class="fade-in">
+    <h2>About Me</h2>
+    <p style="text-align:center; max-width: 650px; margin: 0 auto;">
+      I'm Marzook Ruslan, an aspiring web developer from Sri Lanka currently studying HND in IT. I love building web projects using PHP, JavaScript, MySQL, and HTML/CSS.
+    </p>
+  </section>
+
+  <section id="skills" class="fade-in">
+    <h2>Skills</h2>
+    <div class="skill">
+      <div class="skill-name">HTML</div>
+      <div class="skill-bar"><div class="skill-level" data-level="95%"></div></div>
+    </div>
+    <div class="skill">
+      <div class="skill-name">CSS</div>
+      <div class="skill-bar"><div class="skill-level" data-level="90%"></div></div>
+    </div>
+    <div class="skill">
+      <div class="skill-name">JavaScript</div>
+      <div class="skill-bar"><div class="skill-level" data-level="85%"></div></div>
+    </div>
+    <div class="skill">
+      <div class="skill-name">PHP</div>
+      <div class="skill-bar"><div class="skill-level" data-level="75%"></div></div>
+    </div>
+  </section>
+
+  <section id="qualification" class="fade-in">
+    <h2>Qualification</h2>
+    <p style="text-align:center; font-size: 1.1rem; margin-bottom: 2rem; color: #444;">My Personal Journey</p>
+
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-icon"><i class="fas fa-graduation-cap"></i></div>
+        <div class="timeline-content">
+          <h3>HND in IT</h3>
+          <span class="timeline-date">SLIATE Trincomalee || 2023 - 2025</span>
+          <p>Programming, Web Designing, Computer Networks, PHP, Java</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-icon"><i class="fas fa-school"></i></div>
+        <div class="timeline-content">
+          <h3>G.C.E Advanced Level (A/L)</h3>
+          <span class="timeline-date">T/Mu/Al-Hithaya M.V || 2018 - 2020</span>
+          <p>Arts stream – 2CS subjects</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-icon"><i class="fas fa-school"></i></div>
+        <div class="timeline-content">
+          <h3>G.C.E Ordinary Level (O/L)</h3>
+          <span class="timeline-date">T/Mu/Al-Hilal Cetral College || 2017</span>
+          <p>Passed with A, 2B, 4C, 2S</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="projects" class="fade-in">
+    <h2>Projects</h2>
+    <!-- Add your project cards here -->
+    <div class="project-card">
+      <img src="Screenshot (779).png" alt="Project" class="project-image" />
+      <div class="project-title">Online Class Platform</div>
+      <div class="project-description">A tutor-student session booking system with real-time updates and authentication.</div>
+      <div class="project-links">
+        <a href="https://github.com/Ruslan200178/online_class" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
+      </div>
+    </div>
+    <div class="project-card">
+      <img src="Screenshot (798).png" alt="Project 2" class="project-image" />
+      <div class="project-title">Quiz_Management_System(2nd Sem Group Project)</div>
+      <div class="project-description">
+        Developed a web-based platform that allows admins to create and manage quizzes, while students can register, take quizzes, and view results. Implemented secure
+        login for admin and users, automatic quiz evaluation, and result tracking using PHP, MySQL, HTML/CSS, and JavaScript.
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/Ruslan200178/Quiz" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-github"></i> GitHub
+        </a>
+        <a href="#" target="_blank" rel="noopener noreferrer">
+          <i class="fas fa-external-link-alt"></i> Live Demo
+        </a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <img src="Screenshot (800).png" alt="Project 3" class="project-image" />
+      <div class="project-title">Farmers Management System (1st semester frontend website)</div>
+      <div class="project-description">
+        Designed and implemented welcome pages and about, featured products using JavaScript, HTML5, and CSS3.
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/Ruslan200178/Farmers_Management" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-github"></i> GitHub
+        </a>
+        <a href="#" target="_blank" rel="noopener noreferrer">
+          <i class="fas fa-external-link-alt"></i> Live Demo
+        </a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <img src="Screenshot (781).png" alt="Project 4" class="project-image" />
+      <div class="project-title">Hunger Saver System - Expiry Food Redistribution System</div>
+      <div class="project-description">
+        "Hunger Saver" is a web-based (or mobile-friendly) application designed to connect supermarkets, restaurants, and households with surplus or near-expiry food to NGOs, shelters, or individuals in need.
+        The goal is to minimize food wastage while supporting hunger relief efforts.
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/Ruslan200178/Hunger_Saver_System" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-github"></i> GitHub
+        </a>
+        <a href="#" target="_blank" rel="noopener noreferrer">
+          <i class="fas fa-external-link-alt"></i> Live Demo
+        </a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <img src="Screenshot (799).png" alt="Project 5" class="project-image" />
+      <div class="project-title">Mosque Management System (Currently Developing)</div>
+      <div class="project-description">
+        The Mosque Management System is a user-friendly web application developed for local community
+        organizations (Mahallas) to manage their member data efficiently. This system provides an organized
+        digital platform for administrators to maintain accurate member records and streamline administrative tasks.
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/Ruslan200178/mahalla" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-github"></i> GitHub
+        </a>
+        <a href="#" target="_blank" rel="noopener noreferrer">
+          <i class="fas fa-external-link-alt"></i> Live Demo
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="fade-in">
+    <h2>Contact Me</h2>
+    <p>Email: <a href="mailto:mohamedruslan392@gmail.com">mohamedruslan392@gmail.com</a></p>
+    <p>
+      <a href="https://linkedin.com/in/mohamed-ruslan" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/Ruslan200178" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+    </p>
+  </section>
+
+  <footer>
+    &copy; 2025 Marzook Ruslan. All rights reserved.
+  </footer>
+
+  <!-- Go to Top Button -->
+  <button id="goTopBtn" aria-label="Go to top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <script>
+    // Typed text animation
+    const typedTextSpan = document.querySelector(".typed-text");
+    const textArray = ["Frontend Developer", "Web Designer", "Software Enthusiast"];
+    const typingDelay = 150, erasingDelay = 100, newTextDelay = 2000;
+    let textArrayIndex = 0, charIndex = 0;
+
+    function type() {
+      if (charIndex < textArray[textArrayIndex].length) {
+        typedTextSpan.textContent += textArray[textArrayIndex][charIndex];
+        charIndex++;
+        setTimeout(type, typingDelay);
+      } else setTimeout(erase, newTextDelay);
+    }
+
+    function erase() {
+      if (charIndex > 0) {
+        typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex - 1);
+        charIndex--;
+        setTimeout(erase, erasingDelay);
+      } else {
+        textArrayIndex = (textArrayIndex + 1) % textArray.length;
+        setTimeout(type, typingDelay + 1000);
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      if (textArray.length) setTimeout(type, newTextDelay + 250);
+    });
+
+    // Skill bar animation
+    const skillLevels = document.querySelectorAll('.skill-level');
+    function checkSkills() {
+      skillLevels.forEach(bar => {
+        if (bar.getBoundingClientRect().top < window.innerHeight - 100) {
+          bar.style.width = bar.dataset.level;
+        }
+      });
+    }
+
+    // Fade in animation on scroll
+    const faders = document.querySelectorAll('.fade-in');
+    function fadeInOnScroll() {
+      faders.forEach(el => {
+        if (el.getBoundingClientRect().top < window.innerHeight - 50) {
+          el.classList.add('visible');
+        }
+      });
+    }
+
+    // Go to top button logic
+    const goTopBtn = document.getElementById('goTopBtn');
+
+    window.addEventListener('scroll', () => {
+      checkSkills();
+      fadeInOnScroll();
+      goTopBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
+    });
+
+    window.addEventListener('load', () => {
+      checkSkills();
+      fadeInOnScroll();
+    });
+
+    // Mobile menu toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('nav ul');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+      // Change icon
+      if(navLinks.classList.contains('show')){
+        menuToggle.innerHTML = '<i class="fas fa-times"></i>';
+      } else {
+        menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+      }
+    });
+
+    // Dark mode toggle
+    const darkModeToggle = document.querySelector('.dark-mode-toggle');
+    darkModeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      // Change icon
+      if(document.body.classList.contains('dark')){
+        darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+      } else {
+        darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+      }
+    });
+
+    // Optional: Close mobile menu when clicking a nav link
+    document.querySelectorAll('nav ul li a').forEach(link => {
+      link.addEventListener('click', () => {
+        if(navLinks.classList.contains('show')){
+          navLinks.classList.remove('show');
+          menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
